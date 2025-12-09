@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Evaluación de Creatividad Digital</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="header">
+    <h1>Evaluación de Creatividad Digital</h1>
+    <p class="subtitle">Plataforma para subida y valoración de fotografías en contexto educativo</p>
+  </header>
+
+  <main class="container">
+    <!-- Selección de rol / acceso -->
+    <section id="login-section" class="card">
+      <h2>Acceso</h2>
+      <p>Selecciona tu tipo de acceso e introduce la clave correspondiente.</p>
+
+      <label for="role-select">Soy:</label>
+      <select id="role-select">
+        <option value="">Selecciona una opción</option>
+        <option value="uploader">Alumno/a (subir fotografía)</option>
+        <option value="expert">Experto/a (valorar fotografías)</option>
+        <option value="admin">Investigador/a (gestión de datos)</option>
+      </select>
+
+      <label for="access-password">Clave de acceso:</label>
+      <input type="password" id="access-password" placeholder="Introduce la clave">
+
+      <button id="login-button">Entrar</button>
+
+      <p class="note">
+        Esta plataforma se utiliza en el marco de un estudio sobre creatividad digital en el ámbito educativo.
+        No compartas las claves con personas no autorizadas.
+      </p>
+    </section>
+
+    <!-- Sección subida de fotografía -->
+    <section id="upload-section" class="card hidden">
+      <div class="section-top">
+        <h2>Subida de fotografía</h2>
+        <button type="button" class="back-button">Volver al inicio</button>
+      </div>
+      <p>Sube una fotografía en formato JPG y completa los datos de contexto.</p>
+
+      <form id="upload-form">
+        <div class="form-group">
+          <label for="photo-file">Fotografía (JPG):</label>
+          <input type="file" id="photo-file" accept="image/jpeg,image/jpg" required>
+        </div>
+
+        <div class="form-group">
+          <label for="age">Edad:</label>
+          <input type="number" id="age" min="10" required>
+        </div>
+
+        <div class="form-group">
+          <label for="gender">Sexo:</label>
+          <select id="gender" required>
+            <option value="">Selecciona</option>
+            <option value="Mujer">Mujer</option>
+            <option value="Hombre">Hombre</option>
+            <option value="No binario">No binario</option>
+            <option value="Prefiero no decirlo">Prefiero no decirlo</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="studies">Estudios actuales:</label>
+          <select id="studies" required>
+            <option value="">Selecciona</option>
+            <option value="ESO">ESO</option>
+            <option value="Bachillerato">Bachillerato</option>
+            <option value="Ciclo formativo">Ciclo formativo</option>
+            <option value="Otros">Otros</option>
+          </select>
+        </div>
+
+        <div class="form-group" id="bach-wrapper" style="display:none;">
+          <label for="bach-type">Modalidad de Bachillerato:</label>
+          <select id="bach-type">
+            <option value="">Selecciona</option>
+            <option value="Ciencias">Ciencias</option>
+            <option value="Humanidades y Ciencias Sociales">Humanidades y Ciencias Sociales</option>
+            <option value="Artes">Artes</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="vocation">Vocación o área de interés (opcional):</label>
+          <input type="text" id="vocation" maxlength="100" placeholder="Ej.: Medicina, Diseño, Ingeniería...">
+        </div>
+
+        <div class="form-group">
+          <label for="studies-father">Estudios del padre:</label>
+          <select id="studies-father" required>
+            <option value="">Selecciona</option>
+            <option value="Universitarios">Universitarios</option>
+            <option value="Medios">ESO / Bachillerato / FP</option>
+            <option value="Primarios">Primarios</option>
+            <option value="Sin titulación reglada">Sin titulación reglada</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="studies-mother">Estudios de la madre:</label>
+          <select id="studies-mother" required>
+            <option value="">Selecciona</option>
+            <option value="Universitarios">Universitarios</option>
+            <option value="Medios">ESO / Bachillerato / FP</option>
+            <option value="Primarios">Primarios</option>
+            <option value="Sin titulación reglada">Sin titulación reglada</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <p>¿Has repetido curso alguna vez?</p>
+          <label><input type="radio" name="rep" value="Sí" required> Sí</label>
+          <label><input type="radio" name="rep" value="No"> No</label>
+        </div>
+
+        <div class="form-group">
+          <p>¿Has suspendido alguna vez una asignatura?</p>
+          <label><input type="radio" name="fail" value="Sí" required> Sí</label>
+          <label><input type="radio" name="fail" value="No"> No</label>
+        </div>
+
+        <div class="form-group">
+          <label for="pcs-home">¿De cuántos ordenadores dispones en casa?</label>
+          <input type="number" id="pcs-home" min="0" required>
+        </div>
+
+        <div class="form-group">
+          <p>¿Dispones de un ordenador o un portátil en tu habitación?</p>
+          <label><input type="radio" name="pc-room" value="Sí" required> Sí</label>
+          <label><input type="radio" name="pc-room" value="No"> No</label>
+        </div>
+
+        <div class="form-group">
+          <label for="pc-frequency">¿Con qué frecuencia utilizas el ordenador?</label>
+          <select id="pc-frequency" required>
+            <option value="">Selecciona</option>
+            <option value="A diario">A diario</option>
+            <option value="2 o más veces a la semana">2 o más veces a la semana</option>
+            <option value="2 veces o menos a la semana">2 veces o menos a la semana</option>
+            <option value="Solo los fines de semana">Solo los fines de semana</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="pc-hours">Número de horas al día que usas el ordenador:</label>
+          <input type="number" id="pc-hours" min="0" max="24" required>
+        </div>
+
+        <div class="form-group" id="center-wrapper" style="display:none;">
+          <label for="center">Centro educativo:</label>
+          <select id="center">
+            <option value="">Selecciona tu centro</option>
+          </select>
+          <p class="note" id="center-note"></p>
+        </div>
+
+        <div class="consent-box">
+          <p><strong>Importante:</strong> No subas fotografías donde se identifique claramente a personas sin su permiso. Las imágenes se utilizarán exclusivamente con fines de investigación educativa.</p>
+
+          <p>Gracias por participar en este test. Te informamos de que este cuestionario cumple con la normativa vigente en materia de protección de datos y que será usado exclusivamente para la docencia y la investigación.</p>
+          <p>Por favor, acepta la política de privacidad:</p>
+
+          <label>
+            <input type="checkbox" id="privacy-ok">
+            He leído y acepto la política de privacidad
+          </label>
+        </div>
+
+        <button type="submit">Enviar fotografía</button>
+      </form>
+
+      <div id="upload-message" class="message"></div>
+
+      <div id="upload-preview" class="preview hidden">
+        <h3>Vista previa de tu fotografía</h3>
+        <img id="preview-image" alt="Vista previa">
+        <p id="preview-meta"></p>
+      </div>
+
+      <!-- Bloque de análisis automático de creatividad -->
+      <div id="upload-ai-analysis" class="ai-analysis hidden">
+        <h3>Análisis automático de creatividad</h3>
+        <p><strong>IA ligera (AI_PUNTF):</strong> <span id="ai-light-score">–</span></p>
+        <p><strong>IA local avanzada (composición):</strong> <span id="ai-local-score">–</span></p>
+        <p><strong>IA profunda (modelo externo):</strong> <span id="ai-deep-score">–</span></p>
+        <p id="ai-deep-explanation" class="note"></p>
+      </div>
+    </section>
+
+    <!-- Sección valoración por expertos -->
+    <section id="expert-section" class="card hidden">
+      <div class="section-top">
+        <h2>Valoración de fotografías</h2>
+        <button type="button" class="back-button">Volver al inicio</button>
+      </div>
+
+      <div class="form-group">
+        <label for="expert-id">Tu código de experto/a:</label>
+        <input type="text" id="expert-id" placeholder="Ej.: EXP01" required>
+      </div>
+
+      <button id="start-rating-button">Comenzar / Continuar valoración</button>
+
+      <div id="rating-area" class="hidden">
+        <div id="no-photos-message" class="message hidden">
+          No hay fotografías pendientes de valorar. Vuelve a intentarlo más tarde.
+        </div>
+
+        <div id="photo-rating-card" class="rating-card hidden">
+          <h3>Fotografía a valorar</h3>
+          <img id="rating-photo" alt="Fotografía a valorar">
+          <p id="rating-photo-info"></p>
+
+          <h4>Ítems de valoración (1 = muy bajo, 10 = muy alto)</h4>
+          <div id="rating-items-container"></div>
+
+          <p class="puntf">PUNTF (media de ítems): <span id="puntf-value">0.0</span></p>
+
+          <div class="rating-buttons">
+            <button id="save-rating-button">Guardar valoración y siguiente</button>
+            <button id="skip-photo-button" class="secondary">Omitir fotografía</button>
+          </div>
+
+          <p id="rating-message" class="message"></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sección administración / exportación -->
+    <section id="admin-section" class="card hidden">
+      <div class="section-top">
+        <h2>Panel de investigación</h2>
+        <button type="button" class="back-button">Volver al inicio</button>
+      </div>
+      <p>Desde aquí puedes exportar los datos de fotografías y valoraciones en formato CSV para analizarlos estadísticamente.</p>
+
+      <button id="export-csv-button">Descargar CSV</button>
+      <p class="note">El archivo incluirá una fila por combinación fotografía × experto/a, con las valoraciones y la PUNTF.</p>
+
+      <h3>Opciones de recogida de datos</h3>
+      <div class="form-group">
+        <label>
+          <input type="checkbox" id="ask-center-toggle">
+          Solicitar el "Centro educativo" al alumnado en el formulario
+        </label>
+        <p class="note">Puedes activar o desactivar esta opción según las necesidades del estudio.</p>
+      </div>
+
+      <div class="form-group" id="centers-config">
+        <label for="centers-textarea">Centros educativos (uno por línea):</label>
+        <textarea id="centers-textarea" rows="4" placeholder="IES Ejemplo 1&#10;IES Ejemplo 2"></textarea>
+        <button type="button" id="save-centers-button">Guardar lista de centros</button>
+        <p class="note">Estos centros aparecerán en el desplegable del alumnado cuando la opción esté activada.</p>
+      </div>
+
+      <h3>Ítems de valoración de fotografías</h3>
+      <div class="form-group">
+        <label for="rating-items-textarea">Ítems (uno por línea):</label>
+        <textarea id="rating-items-textarea" rows="5"
+          placeholder="Originalidad y novedad&#10;Expresión creativa y emocional&#10;Uso innovador de técnicas digitales"></textarea>
+        <button type="button" id="save-rating-items-button">Guardar ítems de valoración</button>
+        <p class="note">Estos ítems se utilizarán en la interfaz de valoración de las fotografías.</p>
+      </div>
+
+      <h3>Claves de acceso</h3>
+      <div class="form-group">
+        <label for="uploader-password-input">Clave para alumnado (subir fotografías):</label>
+        <input type="text" id="uploader-password-input" placeholder="alumno2025">
+      </div>
+      <div class="form-group">
+        <label for="expert-password-input">Clave para expertos/as (valorar fotografías):</label>
+        <input type="text" id="expert-password-input" placeholder="experto2025">
+      </div>
+      <div class="form-group">
+        <label for="admin-password-input">Clave para investigación (panel de administración):</label>
+        <input type="text" id="admin-password-input" placeholder="admin2025">
+      </div>
+      <button type="button" id="save-passwords-button">Guardar claves de acceso</button>
+      <p class="note">
+        Estas claves se usarán en la pantalla de acceso. Si las cambias, avisa al alumnado y a los expertos.
+      </p>
+
+      <h3>Valoración automática (IA ligera)</h3>
+      <div class="form-group">
+        <label>
+          <input type="checkbox" id="ai-enabled-toggle">
+          Activar valoración automática de creatividad (AI_PUNTF)
+        </label>
+        <p class="note">
+          Se calcularán algunos parámetros visuales simples en el navegador (brillo, contraste, color, complejidad)
+          y se combinarán en un índice de 0 a 10.
+        </p>
+      </div>
+
+      <div class="form-group" id="ai-config-block">
+        <table class="ai-config-table">
+          <thead>
+            <tr>
+              <th>Parámetro</th>
+              <th>Usar</th>
+              <th>Peso (0–100)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Brillo global</td>
+              <td class="center-cell">
+                <input type="checkbox" id="ai-brightness-enabled">
+              </td>
+              <td>
+                <input type="number" id="ai-brightness-weight" min="0" max="100" class="small-input">
+              </td>
+            </tr>
+            <tr>
+              <td>Contraste</td>
+              <td class="center-cell">
+                <input type="checkbox" id="ai-contrast-enabled">
+              </td>
+              <td>
+                <input type="number" id="ai-contrast-weight" min="0" max="100" class="small-input">
+              </td>
+            </tr>
+            <tr>
+              <td>Intensidad de color</td>
+              <td class="center-cell">
+                <input type="checkbox" id="ai-colorfulness-enabled">
+              </td>
+              <td>
+                <input type="number" id="ai-colorfulness-weight" min="0" max="100" class="small-input">
+              </td>
+            </tr>
+            <tr>
+              <td>Complejidad (bordes)</td>
+              <td class="center-cell">
+                <input type="checkbox" id="ai-edgedensity-enabled">
+              </td>
+              <td>
+                <input type="number" id="ai-edgedensity-weight" min="0" max="100" class="small-input">
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <button type="button" id="save-ai-config-button">Guardar configuración IA</button>
+        <p class="note">
+          El peso es la importancia relativa de cada parámetro en el índice automático. Solo cuentan los parámetros marcados.
+        </p>
+      </div>
+
+      <h3>Gestión del experimento</h3>
+      <div class="form-group">
+        <button type="button" id="reset-db-button" class="danger-button">
+          Reinicializar base de datos (borrar todas las fotografías y valoraciones)
+        </button>
+        <p class="note">
+          Úsalo solo cuando quieras comenzar un experimento desde cero. No afecta a la configuración (centros, ítems, IA, etc.).
+        </p>
+      </div>
+
+      <h3>Resumen rápido</h3>
+      <ul id="admin-summary-list"></ul>
+
+      <h3>Visualización de datos</h3>
+      <div id="admin-charts">
+        <div class="chart-block">
+          <h4>Distribución de fotografías por edad</h4>
+          <div id="age-chart" class="chart-bar-container"></div>
+          <p class="note" id="age-chart-note"></p>
+        </div>
+      </div>
+
+      <h3>Listado de fotografías y valoraciones</h3>
+      <button id="load-photos-button">Cargar fotografías y valoraciones</button>
+      <div id="photos-list" class="photos-list"></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>Plataforma experimental de evaluación de creatividad digital en contextos educativos.</p>
+  </footer>
+
+  <!-- script principal como módulo ES6 -->
+  <script type="module" src="script.js"></script>
+</body>
+</html>
